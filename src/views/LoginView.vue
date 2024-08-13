@@ -4,11 +4,11 @@
         <h1>Login</h1>
         <label for="e">Ingresar Correo:</label>
         <input type="email" v-model="usuario.email">
-        <!--<span>{{ errors.email }}</span>-->
+        <span>{{ errors.email }}</span>
         <br>
         <label>Ingresar Contraseña:</label>
         <input type="password" v-model="usuario.password">
-        <!--<span>{{ errors.password }}</span>-->
+        <span>{{ errors.password }}</span>
         <br>
         <input type="button" value="Ingresar" v-on:click="funIngresar">
         
@@ -17,17 +17,30 @@
 
 <script setup>
 import { ref } from 'vue';
-import axios from 'axios';
+//import axios from 'axios';
+import { useRouter, useRoute } from "vue-router";
+import authService from '@/services/auth.service';
 
     //variables
     const usuario = ref({email:"", password:""})
+    const errors = ref({})
+    const router = useRouter()
 
     //metodos
     async function funIngresar() {
-        axios.post("http://127.0.0.1:8000/api/v1/auth/login", usuario.value).then(
-            (res) => {
-                console.log("CON AXIOS", res.data)
-            }
-        )
+        try {
+            const { data } = await authService.funLogin(usuario.value)
+            console.log("CON INTERCEPTOR", data)
+            errors.value = {}
+
+            //auth.setUsuario(data.usuario.email)
+
+            localStorage.setItem("access_token", data.access_token);
+            //localStorage.setItem("auth", data.usuario.email);
+            router.push("/about")
+        } catch (error) {
+            console.log(error.response.data)
+            errors.value = error.response.data.errors
+        }
     }
 </script>
