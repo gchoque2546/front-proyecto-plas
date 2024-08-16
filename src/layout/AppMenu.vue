@@ -26,6 +26,21 @@ const model = ref([
         ]
     },
     {
+        label: 'Gestión Clases',
+        items: [
+            { label: 'Clases', icon: 'pi pi-fw pi-id-card', to: '/clase' },
+            { label: 'Servicios', icon: 'pi pi-fw pi-check-square', to: '/servicio' },
+        ]
+    },
+    {
+        label: 'Gestion Servicos',
+        items: [
+            { label: 'Clientes', icon: 'pi pi-fw pi-eye', to: '/cliente', badge: 'NEW' },
+            { label: 'Contratos', icon: 'pi pi-fw pi-globe', to: '/contrato'},
+            { label: 'Nuevo Contrato', icon: 'pi pi-fw pi-globe', to: '/contrato/nuevo'}
+        ]
+    },
+    {
         label: 'Gestión Usuarios',
         items: [
             { label: 'Usuarios', icon: 'pi pi-fw pi-prime', to: '/usuario' },
