@@ -4,6 +4,8 @@ import VistaLogin from '@/views/LoginView.vue';
 import AppLayout from '@/layout/AppLayout.vue';
 import Categoria from '@/views/admin/Categoria.vue';
 import Clase from '@/views/admin/Clase.vue';
+import Producto from '@/views/admin/Producto.vue';
+import Servicio from '@/views/admin/Servicio.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -41,6 +43,18 @@ const router = createRouter({
           path: '/clase',
           name: 'Clase',
           component: Clase,
+          meta: {requireAuth: true}
+        },
+        {
+          path: '/producto',
+          name: 'Producto',
+          component: Producto,
+          meta: {requireAuth: true}
+        },
+        {
+          path: '/servicio',
+          name: 'Servicio',
+          component: Servicio,
           meta: {requireAuth: true}
         },
       ]

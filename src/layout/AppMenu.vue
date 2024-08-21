@@ -11,38 +11,27 @@ const model = ref([
         ]
     },
     {
-        label: 'Gestión Productos',
+        label: 'Gestión de Productos',
         items: [
             { label: 'Categorias', icon: 'pi pi-fw pi-id-card', to: '/categoria' },
             { label: 'Productos', icon: 'pi pi-fw pi-check-square', to: '/producto' },
-        ]
-    },
-    {
-        label: 'Gestion Pedidos',
-        items: [
-            { label: 'Clientes', icon: 'pi pi-fw pi-eye', to: '/cliente', badge: 'NEW' },
             { label: 'Pedidos', icon: 'pi pi-fw pi-globe', to: '/pedido'},
             { label: 'Nuevo Pedido', icon: 'pi pi-fw pi-globe', to: '/pedido/nuevo'}
         ]
     },
     {
-        label: 'Gestión Clases',
+        label: 'Gestion de Contratos',
         items: [
-            { label: 'Clases', icon: 'pi pi-fw pi-id-card', to: '/clase' },
-            { label: 'Servicios', icon: 'pi pi-fw pi-check-square', to: '/servicio' },
-        ]
-    },
-    {
-        label: 'Gestion Servicos',
-        items: [
-            { label: 'Clientes', icon: 'pi pi-fw pi-eye', to: '/cliente', badge: 'NEW' },
+        { label: 'Clases', icon: 'pi pi-fw pi-id-card', to: '/clase' },
+        { label: 'Servicios', icon: 'pi pi-fw pi-check-square', to: '/servicio' },
             { label: 'Contratos', icon: 'pi pi-fw pi-globe', to: '/contrato'},
             { label: 'Nuevo Contrato', icon: 'pi pi-fw pi-globe', to: '/contrato/nuevo'}
         ]
     },
     {
-        label: 'Gestión Usuarios',
+        label: 'Gestión de Usuarios',
         items: [
+            { label: 'Clientes', icon: 'pi pi-fw pi-eye', to: '/cliente'},
             { label: 'Usuarios', icon: 'pi pi-fw pi-prime', to: '/usuario' },
         ]
     },
