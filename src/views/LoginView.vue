@@ -1,7 +1,8 @@
 <template>
     <div class="surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden">
         <div class="flex flex-column align-items-center justify-content-center">
-            <Image src="src/img/logoPlas01.webp" alt="Logo Plas" width="175" />
+            <!--Image src="src/img/logoPlas01.webp" alt="Logo Plas" width="175" /-->
+            <Image src="public/img/logoPlas01.webp" alt="Logo Plas" width="175" />
             <div style="border-radius: 36px; padding: 0.3rem; background: linear-gradient(180deg, var(--primary-color) 10%, rgba(33, 150, 243, 0) 30%)">
                 <div class="w-full surface-card py-8 px-5 sm:px-8" style="border-radius: 53px">
                     <div class="text-center mb-4">
@@ -15,6 +16,7 @@
                                 for="email"
                             >Correo Electronico</label>
                             <InputText
+                                @keypress.enter="funIngresar()"
                                 id="email"
                                 class="w-full md:w-30rem mb-2"
                                 placeholder="Ingrese Correo Electronico"
@@ -32,6 +34,7 @@
                                 for="password"
                             >Contraseña</label>
                             <Password
+                                @keypress.enter="funIngresar()"
                                 v-model="usuario.password"
                                 placeholder="Ingrese Contraseña" 
                                 toggleMask
@@ -46,7 +49,7 @@
                             >{{ errors.password }}</Message>
                         </div>
                       
-                        <div class="flex align-items-center justify-content-between mt-5 gap-5">
+                        <div class="flex align-items-center justify-content-between mt-8 gap-5">
                         <Button
                             label="Ingresar"
                             class="w-full md:w-30rem text-xl"

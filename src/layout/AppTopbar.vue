@@ -2,10 +2,16 @@
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
 import { useLayout } from '@/layout/composables/layout';
 import { useRouter } from 'vue-router';
+
+import AppConfig from './AppConfig.vue';
+
 const { layoutConfig, onMenuToggle } = useLayout();
 const outsideClickListener = ref(null);
 const topbarMenuActive = ref(false);
 const router = useRouter();
+
+const { toggleDarkMode, isDarkTheme } = useLayout();
+
 onMounted(() => {
     bindOutsideClickListener();
 });
@@ -13,7 +19,8 @@ onBeforeUnmount(() => {
     unbindOutsideClickListener();
 });
 const logoUrl = computed(() => {
-    return `/layout/images/${layoutConfig.darkTheme.value ? 'logo-white' : 'logo-dark'}.svg`;
+    //return `/layout/images/${layoutConfig.darkTheme.value ? 'logo-white' : 'logo-dark'}.svg`;
+    return `/img/${layoutConfig.darkTheme.value ? 'logoPlas00' : 'logoPlas01'}.webp`;
 });
 const onTopBarMenuButton = () => {
     topbarMenuActive.value = !topbarMenuActive.value;
@@ -54,8 +61,9 @@ const isOutsideClicked = (event) => {
 <template>
     <div class="layout-topbar">
         <router-link to="/" class="layout-topbar-logo">
-            <img :src="logoUrl" alt="logo" />
-            <span>SAKAI</span>
+            <img :src="logoUrl" alt="logo">
+            <!--Image src="../img/logoPlas01.webp" alt="Logo Plas" height="40" /-->
+            <span>CONSTRUCTORA PLAS</span>
         </router-link>
 
         <button class="p-link layout-menu-button layout-topbar-button" @click="onMenuToggle()">
@@ -70,6 +78,10 @@ const isOutsideClicked = (event) => {
             <button @click="onTopBarMenuButton()" class="p-link layout-topbar-button">
                 <i class="pi pi-calendar"></i>
                 <span>Calendar</span>
+            </button>
+
+            <button type="button" class="layout-topbar-action" @click="toggleDarkMode">
+                <i :class="['pi', { 'pi-moon': isDarkTheme, 'pi-sun': !isDarkTheme }]"></i>
             </button>
             <button @click="onTopBarMenuButton()" class="p-link layout-topbar-button">
                 <i class="pi pi-user"></i>
